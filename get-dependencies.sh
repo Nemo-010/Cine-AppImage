@@ -8,11 +8,14 @@ echo "---------------------------------------------------------------"
 pacman -Syu --noconfirm --needed blueprint-compiler meson 
 #Needed
 pacman -S --noconfirm --needed libadwaita mpv python-gobject python-mpv python-pip
+if [ "$ARCH" = 'x86_64' ]; then
+	pacman -S --noconfirm --needed libva-intel-driver
+fi
 
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano ffmpeg-mini
+get-debloated-pkgs --add-common --prefer-nano ffmpeg-mini intel-media-driver-mini
 
 
 echo "Installing masterkey from source packages..."
